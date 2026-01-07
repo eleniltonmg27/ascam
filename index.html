@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCAM Matipó - Coleta de Recicláveis</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="index.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="./image/LOGOTIPO-ASCAM-MATIPO-ACE-FACULDADE.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="supabaseClient.js"></script>
+<script src="cod.js"></script>
+
+    <script src="cod.js"></script>
+  </head>
+  <body>
+    <header class="header-container">
+      <div class="header-content">
+        <div class="logo-area">
+          <img src="image/LOGOTIPO-ASCAM-MATIPO-ACE-FACULDADE.png" alt="Logo ASCAM" class="logo-img" />
+          <div class="logo-text">
+            <div class="logo-title">ASCAM</div>
+            <div class="logo-subtitle">MATIPÓ</div>
+          </div>
+        </div>
+        <nav class="nav-desktop">
+          <a href="#inicio" class="nav-link">Início</a>
+          <a href="#materiais" class="nav-link">Materiais coletados</a>
+          <a href="#dicas" class="nav-link">Dicas</a>
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <button onclick="scrollToForm()" class="btn-primary">
+            <span class="btn-icon">📅</span>
+            AGENDAR COLETA
+          </button>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="nav-mobile" id="mobileMenu">
+        <a href="#inicio" class="nav-link" onclick="closeMobileMenu()"
+          >Início</a
+        >
+        <a href="#materiais" class="nav-link" onclick="closeMobileMenu()"
+          >Materiais coletados</a
+        >
+        <a href="#dicas" class="nav-link" onclick="closeMobileMenu()">Dicas</a>
+        <a href="#sobre" class="nav-link" onclick="closeMobileMenu()">Sobre</a>
+        <button
+          onclick="scrollToForm(); closeMobileMenu();"
+          class="btn-primary mobile-btn"
+        >
+          <span class="btn-icon">📅</span>
+        </button>
+      </nav>
+    </header>
+
+    <section id="inicio" class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">AGENDE SUA<br />COLETA!</h1>
+          <p class="hero-subtitle">
+            Descarte seus materiais recicláveis de forma correta, segura e
+            sustentável, com a ASCAM! Coletamos o seu material diretamente no
+            seu endereço, em tempo recorde, e sem nenhum custo.
+          </p>
+          <div class="hero-buttons">
+            <button onclick="scrollToForm()" class="btn-primary">
+              <span class="btn-icon">📅</span>
+              AGENDAR COLETA
+            </button>
+            <button
+              onclick="scrollToSection('materiais')"
+              class="btn-secondary"
+            >
+              <span class="btn-icon">♻️</span>
+              MATERIAIS COLETADOS
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="materiais" class="materiais-section">
+      <div class="container">
+        <h2 class="section-title">Quais materiais coletamos?</h2>
+        <div class="materials-grid">
+          <div class="material-card blue-card">
+            <div class="material-icon">📄</div>
+            <h3 class="material-title">Papel</h3>
+            <p class="material-desc">
+              Jornais, revistas, caixas de papelão, papel de escritório
+            </p>
+          </div>
+          <div class="material-card red-card">
+            <div class="material-icon">🧴</div>
+            <h3 class="material-title">Plástico</h3>
+            <p class="material-desc">
+              Garrafas PET, embalagens, sacolas plásticas
+            </p>
+          </div>
+          <div class="material-card yellow-card">
+            <div class="material-icon">🔩</div>
+            <h3 class="material-title">Metal</h3>
+            <p class="material-desc">
+              Latas de alumínio, ferro, cobre e outros metais
+            </p>
+          </div>
+          <div class="material-card brown-card">
+            <div class="material-icon">🪵</div>
+            <h3 class="material-title">Madeira</h3>
+            <p class="material-desc">Sobras de madeira natural, tábuas, ripas, compensados e etc.</p>
+          </div>
+          <div class="material-card orange-card">
+            <div class="material-icon">📦</div>
+            <h3 class="material-title">Outros</h3>
+            <p class="material-desc">Caixas longa vida, isopor, espumas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dicas" class="dicas-section">
+      <div class="container">
+        <h2 class="section-title">
+          RECICLAR É SIMPLES<br />SEPARE O LIXO EM DOIS
+        </h2>
+        <div class="dicas-grid">
+          <div class="dica-card">
+            <div class="dica-icon">💧</div>
+            <h3 class="dica-title">Lixo Úmido</h3>
+            <p class="dica-desc">Restos de comida e lixo de banheiro</p>
+          </div>
+          <div class="dica-card">
+            <div class="dica-icon">♻️</div>
+            <h3 class="dica-title">Lixo Seco</h3>
+            <p class="dica-desc">Plástico, Vidro, Metal e Papel</p>
+          </div>
+        </div>
+
+        <div class="dicas-list">
+          <div class="dica-item">
+            <span class="check-icon">✓</span>
+            <span
+              >Lave as embalagens para remover restos de alimentos e
+              líquidos</span
+            >
+          </div>
+          <div class="dica-item">
+            <span class="check-icon">✓</span>
+            <span>Compacte as embalagens para ganhar espaço</span>
+          </div>
+          <div class="dica-item">
+            <span class="check-icon">✓</span>
+            <span>Descarte-as secas para facilitar a triagem</span>
+          </div>
+        </div>
+
+        <div class="alert-box">
+          <p>
+            <strong>⚠️ Lembre-se!</strong> Pilhas, óleo de cozinha e eletrônicos
+            precisam de descarte especial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="form" class="form-section">
+      <div class="container">
+        <h2 class="section-title">AGENDAR COLETA</h2>
+        <div class="form-wrapper">
+          <form id="agendamentoForm" novalidate>
+            <div class="form-grid">
+              <div class="form-column">
+                <fieldset class="form-fieldset">
+                  <legend class="form-legend">Dados do solicitante</legend>
+                  <div class="form-group">
+                    <label class="form-label" for="name">Nome completo *</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon" aria-hidden="true">👤</span>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Digite seu nome"
+                        class="form-input"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+  <label class="form-label" for="phone">Telefone / WhatsApp *</label>
+  <div class="input-wrapper">
+    <span class="input-icon" aria-hidden="true">📞</span>
+    <input type="tel" id="phone" placeholder="(31) 9xxxx-xxxx" class="form-input" required />
+  </div>
+</div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="material">Material *</label>
+                    <div class="input-wrapper select-wrapper">
+                      <span class="input-icon" aria-hidden="true">♻️</span>
+                      <select id="material" class="form-input" required>
+                        <option value="">Selecione o material</option>
+                        <option value="Papel">Papel</option>
+                        <option value="Plástico">Plástico</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Vidro">Vidro</option>
+                        <option value="Misto">Misto</option>
+                        <option value="Outros">Outros</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="weight">Peso estimado *</label>
+                    <div class="input-wrapper select-wrapper">
+                      <span class="input-icon" aria-hidden="true">⚖️</span>
+                      <select id="weight" class="form-input" required>
+                        <option value="">Selecione o peso</option>
+                        <option value="Menos de 5 kg">Menos de 5 kg</option>
+                        <option value="5-10 kg">5-10 kg</option>
+                        <option value="10-20 kg">10-20 kg</option>
+                        <option value="Mais de 20 kg">Mais de 20 kg</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="observation">Observações</label>
+                    <div class="input-wrapper textarea-wrapper">
+                      <span class="input-icon" aria-hidden="true">📝</span>
+                      <textarea
+                        id="observation"
+                        placeholder="Informe detalhes importantes (opcional)"
+                        class="form-input"
+                        rows="4"
+                        aria-describedby="observationHint"
+                        style="resize: none;"
+                      ></textarea>
+                    </div>
+                    <p class="form-hint" id="observationHint">
+                      Ajude nossa equipe com orientações extras sobre o local ou os materiais.
+                    </p>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="form-column">
+                <fieldset class="form-fieldset">
+                  <legend class="form-legend">Local da coleta</legend>
+                  <div class="form-group">
+                    <label class="form-label" for="street">Rua *</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon" aria-hidden="true">📍</span>
+                      <input
+                        type="text"
+                        id="street"
+                        placeholder="Informe a rua"
+                        class="form-input"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="neighborhood">Bairro *</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon" aria-hidden="true">🏘️</span>
+                      <input
+                        type="text"
+                        id="neighborhood"
+                        placeholder="Informe o bairro"
+                        class="form-input"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label" for="number">Número *</label>
+                      <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">#</span>
+                        <input
+                          type="tel"
+                          maxlength="6"
+                          id="number"
+                          placeholder="Nº"
+                          class="form-input"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="complement">Complemento</label>
+                      <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">🔑</span>
+                      <input
+                        type="text"
+                        id="complement"
+                        placeholder="Bloco, apto, etc."
+                        class="form-input"
+                        aria-describedby="complementHint"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p class="form-hint" id="complementHint">
+                  Informe um complemento para facilitar nossa identificação.
+                </p>
+              </fieldset>
+
+                <div class="form-footer">
+                  <div class="termos">
+                    <input type="checkbox" id="aceito" name="aceito" required />
+                    <label for="aceito">Li e aceito os</label>
+                    <button
+                      type="button"
+                      class="terms-link"
+                      data-modal-target="termsModal"
+                      aria-controls="termsModal"
+                      aria-expanded="false"
+                    >
+                      termos de uso
+                    </button>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn-submit btn-disabled"
+                    disabled
+                    aria-disabled="true"
+                  >
+                    <span class="btn-icon">📞</span>
+                    ENVIAR AGENDAMENTO
+                  </button>
+                  <p class="form-safe">
+                    🔒 Seus dados são usados apenas para o agendamento da coleta.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="sobre-section">
+      <div class="container">
+        <h2 class="section-title">SOBRE A ASCAM</h2>
+        <div class="sobre-content">
+          <p>
+            A ASCAM é uma organização dedicada a transformar resíduos em
+            recursos valiosos, contribuindo para a preservação do meio ambiente
+            e a qualidade de vida da comunidade. Localizada no bairro Exposição,
+            em Matipó, desempenha um papel essencial na gestão de recicláveis.
+          </p>
+          <p>
+            Além da coleta e separação, a ASCAM promove sustentabilidade e
+            prosperidade. Com o trabalho incansável dos catadores, vai além da
+            reciclagem, transformando vidas e ajudando a salvar o planeta.
+          </p>
+          <p class="sobre-highlight">
+            A ASCAM é mais que uma associação; é um motor de mudança para um
+            mundo mais consciente e sustentável.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3 class="footer-title">ASCAM Matipó</h3>
+            <p class="footer-text">
+              Transformando resíduos em recursos para um futuro sustentável
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Contato</h3>
+            <p class="footer-link">
+              📞 <a href="https://wa.me/31971795379">(31) 97179-5379</a>
+            </p>
+            <!-- <p class="footer-link">
+              ✉️ <a href="mailto:contato@ascam.org">contato@ascam.org</a>
+            </p> -->
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Localização</h3>
+            <p class="footer-text">📍 Bairro Exposição<br />Matipó - MG</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 ASCAM Matipó. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <div class="modal-content">
+        <header class="modal-header">
+          <h2 id="termsModalTitle">Termos de Uso</h2>
+          <button type="button" class="modal-close" data-modal-close aria-label="Fechar modal">
+            ×
+          </button>
+        </header>
+        <div class="modal-body">
+          <iframe
+            src="TERMO_DE_ACEITE.pdf"
+            title="Termos de Uso ASCAM"
+            class="modal-pdf"
+            loading="lazy"
+          ></iframe>
+          <p class="modal-fallback">
+            Caso o PDF não carregue, você pode
+            <a href="TERMO_DE_ACEITE.pdf" target="_blank" rel="noopener">
+              baixar os termos de uso
+            </a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
